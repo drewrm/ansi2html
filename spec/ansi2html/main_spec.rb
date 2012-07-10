@@ -27,6 +27,12 @@ module ANSI2HTML
       out.string.should == '<span class="blue">Hello</span>'
     end
 
+    it "prints in blue when escape code is \e[0;34mHello\e[0m" do
+      out = StringIO.new
+      Main.new("\e[0;34mHello\e[0m", out)
+      out.string.should == '<span class="blue">Hello</span>'
+    end
+
     it "prints simply grey" do
       out = StringIO.new
       Main.new("\e[90mHello\e[0m", out)

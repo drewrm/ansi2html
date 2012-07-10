@@ -66,7 +66,7 @@ module ANSI2HTML
       end
       s = StringScanner.new(ansi.gsub("<", "&lt;"))
       while(!s.eos?)
-        if s.scan(/\e\[(3[0-7]|90|1)m/)
+        if s.scan(/\e\[(?:0;)?(3[0-7]|90|1)m/)
           out.print(%{<span class="#{COLOR[s[1]]}">})
         else
           if s.scan(/\e\[0m/)
